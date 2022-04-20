@@ -7,8 +7,7 @@
     "start": "ui5 serve",
     "build": "ui5 build"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@ui5/cli": "^2.0.0"
   }

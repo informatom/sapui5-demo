@@ -4,13 +4,18 @@
       <pages>
         <Page title="{i18n>peoplePageTitle}">
           <content>
-            <Table id="peopleList" growing="true" growingThreshold="10" items="{
+            <Table 
+              id="peopleList" 
+              growing="true" 
+              growingThreshold="10" 
+              items="{
 								path: '/People',
 								parameters: {
 									$count: true,
 									$$updateGroupId : 'peopleGroup'
 								}
-							}">
+							}"
+                mode="SingleSelectLeft">
               <headerToolbar>
                 <OverflowToolbar>
                   <content>
@@ -26,6 +31,15 @@
 											icon="sap-icon://add"
 											tooltip="{i18n>createButtonText}"
 											press=".onCreate">
+											<layoutData>
+												<OverflowToolbarLayoutData priority="NeverOverflow"/>
+											</layoutData>
+										</Button>
+                    <Button
+											id="deleteUserButton"
+											icon="sap-icon://delete"
+											tooltip="{i18n>deleteButtonText}"
+											press=".onDelete">
 											<layoutData>
 												<OverflowToolbarLayoutData priority="NeverOverflow"/>
 											</layoutData>

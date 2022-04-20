@@ -1,8 +1,7 @@
 {
 	"_version": "1.21.0",
 	"sap.app": {
-		"ach" : "CA-UI5-COR",
-		"id": "sap.ui.core.tutorial.odatav4",
+		"id": "sap.ui.demo.nav",
 		"type": "application",
 		"i18n": {
 			"bundleUrl": "i18n/i18n.properties",
@@ -11,17 +10,18 @@
 			],
 			"fallbackLocale": ""
 		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
 		"applicationVersion": {
 			"version": "1.0.0"
 		},
-		"title": "{{appTitle}}",
-		"description": "{{appDescription}}",
 		"dataSources": {
-			"default": {
-				"uri": "https://services.odata.org/TripPinRESTierService/(S(id))/",
+			"employeeRemote": {
+				"uri": "/here/goes/your/serviceUrl/",
 				"type": "OData",
 				"settings": {
-					"odataVersion": "4.0"
+					"odataVersion": "2.0",
+					"localUri" : "localService/metadata.xml"
 				}
 			}
 		}
@@ -33,32 +33,26 @@
 			"tablet": true,
 			"phone": true
 		}
-	},
+  	},
 	"sap.ui5": {
 		"rootView": {
-			"viewName": "sap.ui.core.tutorial.odatav4.view.App",
+			"viewName": "sap.ui.demo.nav.view.App",
 			"type": "XML",
 			"async": true,
-			"id": "appView"
+			"id": "app"
 		},
 		"dependencies": {
-			"minUI5Version": "1.96.0",
+			"minUI5Version": "1.98.0",
 			"libs": {
 				"sap.m": {},
-				"sap.ui.core": {},
-				"sap.ui.layout": {}
+				"sap.ui.core": {}
 			}
 		},
-		"contentDensities": {
-			"compact": true,
-			"cozy": true
-		},
-    "handleValidation": true,
 		"models": {
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "sap.ui.core.tutorial.odatav4.i18n.i18n",
+					"bundleName": "sap.ui.demo.nav.i18n.i18n",
 					"supportedLocales": [
 						""
 					],
@@ -66,15 +60,7 @@
 				}
 			},
 			"": {
-				"dataSource": "default",
-				"preload": true,
-				"settings": {
-					"autoExpandSelect": true,
-					"earlyRequests": true,
-					"operationMode": "Server",
-          "groupId": "$auto",
-					"synchronizationMode": "None"
-				}
+				"dataSource": "employeeRemote"
 			}
 		}
 	}

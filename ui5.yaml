@@ -1,6 +1,6 @@
 specVersion: '2.6'
 metadata:
-  name: "sap.ui.core.tutorial.odatav4.01"
+  name: "sap.ui.core.tutorial.navigation.01"
 type: application
 
 framework:

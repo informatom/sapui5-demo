@@ -1,14 +1,11 @@
-sap.ui.define([
-	"sap/m/Button",
-	"sap/m/MessageToast"
-], function (Button, MessageToast) {
+sap.ui.require([
+	"sap/m/Text"
+], function (Text) {
 	"use strict";
 
-	new Button({
-		text: "Ready...",
-		press: function () {
-			MessageToast.show("Hello World!");
-		}
-	}).placeAt("content");
-
+	// Attach an anonymous function to the SAPUI5 'init' event
+	sap.ui.getCore().attachInit(function () {
+		// Create a text UI element that displays a hardcoded text string
+		new Text({text: "Hi, my name is Harry Hawk"}).placeAt("content");
+	});
 });

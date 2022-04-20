@@ -1,18 +1,21 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Data Binding</title>
+	<title>OData V4 Tutorial</title>
 	<script id="sap-ui-bootstrap"
-    src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"		
+	  src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
 		data-sap-ui-theme="sap_belize"
-		data-sap-ui-libs="sap.m"
-		data-sap-ui-resourceroots='{"sap.ui.demo.db": "./"}'
+		data-sap-ui-resourceroots='{
+			"sap.ui.core.tutorial.odatav4": "./"
+		}'
+		data-sap-ui-oninit="module:sap/ui/core/tutorial/odatav4/initMockServer"
 		data-sap-ui-compatVersion="edge"
 		data-sap-ui-async="true">
 	</script>
-	<script src="index.js"></script>
 </head>
-<body class="sapUiBody" id="content"></body>
+<body class="sapUiBody">
+	<div data-sap-ui-component data-name="sap.ui.core.tutorial.odatav4" data-id="container" data-settings='{"id" : "odatav4"}'></div>
+</body>
 </html>

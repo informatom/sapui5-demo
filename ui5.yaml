@@ -1,6 +1,6 @@
 specVersion: '2.6'
 metadata:
-  name: webapp
+  name: "sap.ui.core.tutorial.odatav4.01"
 type: application
 
 framework:
@@ -11,3 +11,7 @@ framework:
     - name: sap.ui.core
     - name: sap.ui.table
     - name: themelib_sap_fiori_3
+resources:
+  configuration:
+    paths:
+      webapp: ./webapp

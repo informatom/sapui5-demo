@@ -1,15 +1,15 @@
 {
-  "name": "webapp",
+  "name": "sap.ui.core.tutorial.odatav4.01",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "author": "SAP SE",
+  "description": "Sample: OData V4 - Step 1 - Set Up the Initial App",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ui5 serve",
+    "build": "ui5 build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "dependencies": {
+  },
   "devDependencies": {
-    "@ui5/cli": "^2.14.8"
+    "@ui5/cli": "^2.0.0"
   }
 }

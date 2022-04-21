@@ -23,9 +23,6 @@ sap.ui.define([
     // Assertions
     Then.onTheWorklistPage.theTableShouldHaveAllEntries().
 			and.theTitleShouldDisplayTheTotalAmountOfItems();
-
-		// Cleanup
-		Then.iTeardownMyApp();
 	});
 
   opaTest("Should be able to search for items", function (Given, When, Then) {

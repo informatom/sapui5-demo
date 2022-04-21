@@ -1,61 +1,75 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
-	<edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="1.0">
-		<Schema Namespace="NavigationModel" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-
-			<EntityType Name="Employee">
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:sap="http://www.sap.com/Protocols/SAPData" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+	<edmx:DataServices m:DataServiceVersion="2.0" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+		<Schema Namespace="BULLETINBOARD" xml:lang="en" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+			<EntityType Name="Post" sap:content-version="1" xmlns:sap="http://www.sap.com/Protocols/SAPData">
 				<Key>
-					<PropertyRef Name="EmployeeID"/>
+					<PropertyRef Name="PostID"/>
 				</Key>
-				<Property Name="EmployeeID" Type="Edm.Int32" Nullable="false" p8:StoreGeneratedPattern="Identity" xmlns:p8="http://schemas.microsoft.com/ado/2009/02/edm/annotation"/>
-				<Property Name="LastName" Type="Edm.String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false"/>
-				<Property Name="FirstName" Type="Edm.String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false"/>
-				<Property Name="Address" Type="Edm.String" Nullable="true" MaxLength="60" Unicode="true" FixedLength="false"/>
-				<Property Name="City" Type="Edm.String" Nullable="true" MaxLength="15" Unicode="true" FixedLength="false"/>
-				<Property Name="Region" Type="Edm.String" Nullable="true" MaxLength="15" Unicode="true" FixedLength="false"/>
-				<Property Name="PostalCode" Type="Edm.String" Nullable="true" MaxLength="10" Unicode="true" FixedLength="false"/>
-				<Property Name="Country" Type="Edm.String" Nullable="true" MaxLength="15" Unicode="true" FixedLength="false"/>
-				<Property Name="HomePhone" Type="Edm.String" Nullable="true" MaxLength="24" Unicode="true" FixedLength="false"/>
-				<Property Name="ResumeID" Type="Edm.Int32" Nullable="true"/>
-				<NavigationProperty Name="Resume" Relationship="NavigationModel.FK_Employees_Resumes" FromRole="Employees" ToRole="Resumes"/>
+				<Property MaxLength="40" Name="PostID" Nullable="false" Type="Edm.String" sap:creatable="false" sap:label="Post ID" sap:updatable="false"/>
+				<Property MaxLength="255" Name="Title" Nullable="false" Type="Edm.String" sap:creatable="false" sap:label="Title" sap:updatable="false"/>
+				<Property Name="Description" Nullable="false" Type="Edm.String" sap:creatable="false" sap:label="Description" sap:updatable="false"/>
+				<Property Name="Timestamp" Nullable="false" Type="Edm.DateTime" sap:creatable="false" sap:label="Posted On" sap:sortable="true"
+					sap:updatable="false"/>
+				<Property MaxLength="60" Name="Category" Nullable="false" Type="Edm.String" sap:creatable="false" sap:label="Category" sap:sortable="true"
+					sap:updatable="false"/>
+				<Property MaxLength="255" Name="Contact" Nullable="false" Type="Edm.String" sap:creatable="false" sap:label="Contact" sap:sortable="true"
+					sap:updatable="false"/>
+				<Property MaxLength="3" Name="Currency" Nullable="false" Type="Edm.String" sap:creatable="false" sap:filterable="false"
+					sap:label="Unit of Measure" sap:sortable="true" sap:updatable="false"/>
+				<Property Name="Price" Nullable="false" Precision="23" Scale="4" Type="Edm.Decimal" sap:creatable="false" sap:filterable="false"
+					sap:label="Unit Number" sap:updatable="false"/>
+				<Property Name="Flagged" Nullable="false" Type="Edm.Boolean"/>
+				<NavigationProperty Name="Comments" ToRole="ToRole_PostToComment" FromRole="FromRole_PostToComment" Relationship="BULLETINBOARD.PostToComment"/>
 			</EntityType>
 
-			<EntityType Name="Resume">
+			<EntityType Name="Category" sap:content-version="1" xmlns:sap="http://www.sap.com/Protocols/SAPData">
 				<Key>
-					<PropertyRef Name="ResumeID"/>
+					<PropertyRef Name="CategoryID"/>
 				</Key>
-				<Property Name="ResumeID" Type="Edm.Int32" Nullable="false" p8:StoreGeneratedPattern="Identity" xmlns:p8="http://schemas.microsoft.com/ado/2009/02/edm/annotation"/>
-				<Property Name="Information" Type="Edm.String" Nullable="true" Unicode="true"/>
-				<Property Name="Projects" Type="Edm.String" Nullable="true" Unicode="true"/>
-				<Property Name="Hobbies" Type="Edm.String" Nullable="true" Unicode="true"/>
-				<Property Name="Notes" Type="Edm.String" Nullable="true" Unicode="true"/>
+				<Property MaxLength="60" Name="Name" Nullable="false" Type="Edm.String" sap:creatable="false" sap:label="Category" sap:sortable="true"
+					sap:updatable="false"/>
 			</EntityType>
-
-			<Association Name="NavigationModel.FK_Employees_Resumes">
-				<End Role="Resumes" Type="NavigationModel.Resume" Multiplicity="0..1"/>
-				<End Role="Employees" Type="NavigationModel.Employee" Multiplicity="1"/>
+			<EntityType Name="Comment" sap:content-version="1" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+				<Key>
+					<PropertyRef Name="CommentID"/>
+				</Key>
+				<Property MaxLength="60" Name="CommentID" Nullable="false" Type="Edm.String" sap:creatable="false" sap:label="CommentID" sap:sortable="true"
+					sap:updatable="false"/>
+				<Property MaxLength="40" Name="ParentID" Nullable="false" Type="Edm.String" sap:creatable="false" sap:label="CommentID" sap:sortable="true"
+					sap:updatable="false"/>
+				<Property MaxLength="60" Name="CommentText" Nullable="false" Type="Edm.String" sap:creatable="false" sap:label="Comment" sap:sortable="true"
+					sap:updatable="false"/>
+				<Property MaxLength="60" Name="Author" Nullable="false" Type="Edm.String" sap:creatable="false" sap:label="Author" sap:sortable="true"
+					sap:updatable="false"/>
+				<Property MaxLength="60" Name="Date" Nullable="false" Type="Edm.DateTime" sap:creatable="false" sap:label="Date" sap:sortable="true"
+					sap:updatable="false"/>
+			</EntityType>
+			<Association sap:content-version="1" Name="PostToComment" >
+				<End Type="BULLETINBOARD.Post" Multiplicity="1" Role="FromRole_PostToComment" />
+				<End Type="BULLETINBOARD.Comment" Multiplicity="*" Role="ToRole_PostToComment" />
 				<ReferentialConstraint>
-					<Dependent Role="Resumes">
-						<PropertyRef Name="ResumeID"/>
-					</Dependent>
-					<Principal Role="Employees">
-						<PropertyRef Name="ResumeID"/>
+					<Principal Role="FromRole_PostToComment">
+						<PropertyRef Name="PostID"/>
 					</Principal>
+					<Dependent Role="ToRole_PostToComment">
+						<PropertyRef Name="ParentID"/>
+					</Dependent>
 				</ReferentialConstraint>
 			</Association>
-
-			<EntityContainer Name="NavigationEntities" p7:LazyLoadingEnabled="true" m:IsDefaultEntityContainer="true" xmlns:p7="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
-
-				<EntitySet Name="Employees" EntityType="NavigationModel.Employee"/>
-				<EntitySet Name="Resumes" EntityType="NavigationModel.Resume"/>
-
-				<AssociationSet Name="FK_Employees_Resumes" Association="NavigationModel.FK_Employees_Resumes">
-					<End EntitySet="Employees" Role="Employees"/>
-					<End EntitySet="Resumes" Role="Resumes"/>
+			<EntityContainer Name="BULLETINBOARD_ENTITIES" m:IsDefaultEntityContainer="true">
+				<EntitySet EntityType="BULLETINBOARD.Post" Name="Posts" sap:content-version="1" sap:creatable="false" sap:deletable="false"
+					sap:pageable="false" sap:updatable="false" xmlns:sap="http://www.sap.com/Protocols/SAPData"/>
+				<EntitySet EntityType="BULLETINBOARD.Category" Name="Categories" sap:content-version="1" sap:creatable="false" sap:deletable="false"
+					sap:pageable="false" sap:updatable="false" xmlns:sap="http://www.sap.com/Protocols/SAPData"/>
+				<EntitySet EntityType="BULLETINBOARD.Comment" Name="Comments" sap:content-version="1" sap:creatable="true" sap:deletable="false"
+					sap:pageable="false" sap:updatable="false" xmlns:sap="http://www.sap.com/Protocols/SAPData"/>
+				<AssociationSet Association="BULLETINBOARD.PostToComment" Name="PostToComentSet" sap:content-version="1" sap:creatable="false"
+					sap:deletable="false" sap:updatable="false">
+					<End EntitySet="Posts" Role="FromRole_PostToComment"/>
+					<End EntitySet="Comments" Role="ToRole_PostToComment"/>
 				</AssociationSet>
-
 			</EntityContainer>
-
 		</Schema>
 	</edmx:DataServices>
 </edmx:Edmx>

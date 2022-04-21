@@ -1,34 +1,23 @@
 sap.ui.define([
-	"sap/ui/demo/nav/controller/BaseController",
-  "sap/base/Log"
-
-], function (BaseController, Log) {
+	'./BaseController',
+	'sap/ui/model/json/JSONModel'
+], function (BaseController, JSONModel) {
 	"use strict";
 
-	return BaseController.extend("sap.ui.demo.nav.controller.App", {
+	return BaseController.extend("sap.ui.demo.bulletinboard.controller.App", {
+
 		onInit: function () {
-      // This is ONLY for being used within the tutorial.
-			// The default log level of the current running environment may be higher than INFO,
-			// in order to see the debug info in the console, the log level needs to be explicitly
-			// set to INFO here.
-			// But for application development, the log level doesn't need to be set again in the code.
-			Log.setLevel(Log.Level.INFO);
+			var oViewModel = new JSONModel({
+					busy: true,
+					delay: 0
+				});
 
-			var oRouter = this.getRouter();
+			this.setModel(oViewModel, "appView");
 
-			oRouter.attachBypassed(function (oEvent) {
-				var sHash = oEvent.getParameter("hash");
-				// do something here, i.e. send logging data to the backend for analysis
-				// telling what resource the user tried to access...
-				Log.info("Sorry, but the hash '" + sHash + "' is invalid.", "The resource was not found.");
-			});
-
-      oRouter.attachRouteMatched(function (oEvent){
-				var sRouteName = oEvent.getParameter("name");
-				// do something, i.e. send usage statistics to back end
-				// in order to improve our app and the user experience (Build-Measure-Learn cycle)
-				Log.info("User accessed route " + sRouteName + ", timestamp = " + new Date().getTime());
+			this.getOwnerComponent().getModel().metadataLoaded().then(function () {
+				oViewModel.setProperty("/busy", false);
 			});
 		}
 	});
+
 });

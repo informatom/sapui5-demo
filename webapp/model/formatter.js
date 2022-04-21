@@ -15,8 +15,8 @@ sap.ui.define([], function () {
 			}
 
 			return parseFloat(sValue).toFixed(2);
+		},
+		priceState: function () {
 		}
-
 	};
-
 });

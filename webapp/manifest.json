@@ -54,6 +54,15 @@
 						"master",
 						"detail"
 					]
+				},
+				{
+					"pattern": "detail/{product}/detailDetail/{supplier}/{layout}",
+					"name": "detailDetail",
+					"target": [
+						"master",
+						"detail",
+						"detailDetail"
+					]
 				}
 			],
 			"targets": {
@@ -64,6 +73,10 @@
 				"detail": {
 					"name": "Detail",
 					"controlAggregation": "midColumnPages"
+				},
+				"detailDetail": {
+					"name": "DetailDetail",
+					"controlAggregation": "endColumnPages"
 				}
 			}
 		}

@@ -1,8 +1,8 @@
 {
-  "name": "sap.ui.core.tutorial.mockserver.01",
+  "name": "sap.ui.core.tutorial.fiori2.01",
   "version": "1.0.0",
   "author": "SAP SE",
-  "description": "Sample: OData V2 Mock Server - Step 1 - Initial App Without Data",
+  "description": "Sample: Flexible Column Layout App - Step 1 - Setting Up the Initial App",
   "scripts": {
     "start": "ui5 serve",
     "build": "ui5 build"

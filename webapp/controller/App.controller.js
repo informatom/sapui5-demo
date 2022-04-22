@@ -1,42 +1,36 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller",
-	"sap/m/ObjectListItem",
-	"sap/m/ObjectAttribute"
-], function(Controller, ObjectListItem, ObjectAttribute) {
+	"./BaseController",
+	"sap/ui/model/json/JSONModel"
+], function (BaseController, JSONModel) {
 	"use strict";
 
-	return Controller.extend("sap.ui.demo.MockServer.controller.App", {
-		/**
-		 * Responds to the button press event.
-		 * Upon pressing, we bind the items aggregation of the list to the "Meetups" entityset.
-		 * We pass a custom URL parameter "first=3" (assuming our OData BE knows how to process it).
-		 */
-		onPress: function() {
-			var oList = this.byId("list");
-			oList.bindItems({
-				path: "/Meetups",
-				parameters: {
-					custom: {
-						first: "3"
-					}
-				},
-				template: new ObjectListItem({
-					title: "{Title}",
-					number: {
-						path: 'EventDate',
-						type: 'sap.ui.model.type.DateTime',
-						formatOptions: {
-							style: 'medium'
-						}
-					},
-					attributes: [
-						new ObjectAttribute({
-							text: "{Description}"
-						})
-					]
-				})
+	return BaseController.extend("mycompany.myapp.MyWorklistApp.controller.App", {
+
+		onInit : function () {
+			var oViewModel,
+				fnSetAppNotBusy,
+				iOriginalBusyDelay = this.getView().getBusyIndicatorDelay();
+
+			oViewModel = new JSONModel({
+				busy : true,
+				delay : 0
 			});
+			this.setModel(oViewModel, "appView");
+
+			fnSetAppNotBusy = function() {
+				oViewModel.setProperty("/busy", false);
+				oViewModel.setProperty("/delay", iOriginalBusyDelay);
+			};
+
+			// disable busy indication when the metadata is loaded and in case of errors
+			this.getOwnerComponent().getModel().metadataLoaded().
+				then(fnSetAppNotBusy);
+			this.getOwnerComponent().getModel().attachMetadataFailed(fnSetAppNotBusy);
+
+			// apply content density mode to root view
+			this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
 		}
+
 	});
 
 });

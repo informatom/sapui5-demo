@@ -1,6 +1,6 @@
 specVersion: "2.6"
 metadata:
-  name: "sap.ui.core.tutorial.mockserver.01"
+  name: "sap.ui.core.tutorial.worklist.01"
 type: application
 
 framework:

@@ -1,7 +1,8 @@
 {
 	"_version": "1.21.0",
+
 	"sap.app": {
-		"id": "sap.ui.demo.MockServer",
+		"id": "mycompany.myapp.MyWorklistApp",
 		"type": "application",
 		"i18n": {
 			"bundleUrl": "i18n/i18n.properties",
@@ -10,20 +11,15 @@
 			],
 			"fallbackLocale": ""
 		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
 		"applicationVersion": {
 			"version": "1.0.0"
 		},
-		"title": "{{appTitle}}",
-		"description": "{{appDescription}}",
-		"ach": "ach",
 		"resources": "resources.json",
-		"sourceTemplate": {
-			"id": "ui5template.basicSAPUI5ApplicationProject",
-			"version": "1.30.3"
-		},
 		"dataSources": {
 			"mainService": {
-				"uri": "/",
+				"uri": "/northwind/V2/Northwind/Northwind.svc/",
 				"type": "OData",
 				"settings": {
 					"odataVersion": "2.0",
@@ -36,7 +32,7 @@
 	"sap.ui": {
 		"technology": "UI5",
 		"icons": {
-			"icon": "",
+			"icon": "sap-icon://task",
 			"favIcon": "",
 			"phone": "",
 			"phone@2": "",
@@ -52,17 +48,17 @@
 
 	"sap.ui5": {
 		"rootView": {
-			"viewName": "sap.ui.demo.MockServer.view.App",
+			"viewName": "mycompany.myapp.MyWorklistApp.view.App",
 			"type": "XML",
 			"async": true,
 			"id": "app"
 		},
 		"dependencies": {
-			"minUI5Version": "1.30.0",
+			"minUI5Version": "1.98.0",
 			"libs": {
 				"sap.ui.core": {},
 				"sap.m": {},
-				"sap.ui.layout": {}
+				"sap.f": {}
 			}
 		},
 		"contentDensities": {
@@ -73,7 +69,7 @@
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "sap.ui.demo.MockServer.i18n.i18n",
+					"bundleName": "mycompany.myapp.MyWorklistApp.i18n.i18n",
 					"supportedLocales": [
 						""
 					],
@@ -81,7 +77,56 @@
 				}
 			},
 			"": {
-				"dataSource": "mainService"
+				"dataSource": "mainService",
+				"preload": true
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"type": "View",
+				"viewType": "XML",
+				"path": "mycompany.myapp.MyWorklistApp.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"bypassed": {
+					"target": ["notFound"]
+				},
+				"async": true
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "worklist",
+					"target": ["worklist"]
+				},
+				{
+					"pattern": "Products/{objectId}",
+					"name": "object",
+					"target": ["object"]
+				}
+			],
+			"targets": {
+				"worklist": {
+					"name": "Worklist",
+					"id": "worklist",
+					"level": 1,
+					"title": "{i18n>worklistViewTitle}"
+				},
+				"object": {
+					"name": "Object",
+					"id": "object",
+					"level": 2,
+					"title": "{i18n>objectViewTitle}"
+				},
+				"objectNotFound": {
+					"name": "ObjectNotFound",
+					"id": "objectNotFound"
+				},
+				"notFound": {
+					"name": "NotFound",
+					"id": "notFound"
+				}
 			}
 		}
 	}

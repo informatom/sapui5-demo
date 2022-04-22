@@ -3,7 +3,8 @@
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:semantic="sap.f.semantic"
-  xmlns:form="sap.ui.layout.form">
+  xmlns:form="sap.ui.layout.form"
+  xmlns:l="sap.ui.layout">
 
 	<semantic:SemanticPage
 		id="page"
@@ -61,7 +62,9 @@
     </semantic:headerContent>
 
     <semantic:content>
+      <l:VerticalLayout width="100%">
         <Panel
+            backgroundDesign="Transparent"
             class="sapUiNoContentPadding"
             headerText="{i18n>ObjectSupplierTabTitle}">
             <content>
@@ -89,7 +92,30 @@
                 </form:SimpleForm>
             </content>
         </Panel>
-
+        <Panel
+            backgroundDesign="Transparent"
+            headerText="{i18n>ObjectCommentsTabTitle}">
+            <content>
+                <FeedInput post=".onPost"/>
+                <List
+                    id="idCommentsList"
+                    noDataText="{i18n>ObjectCommentNoData}"
+                    showSeparators="Inner"
+                    items="{
+                        path: 'productFeedback>/productComments',
+                        sorter: {
+                            path: 'date',
+                            descending: true
+                        }
+                    }">
+                    <FeedListItem
+                        info="{productFeedback>type}"
+                        text="{productFeedback>comment}"
+                        timestamp="{productFeedback>date}"/>
+                </List>
+            </content>
+        </Panel>
+    </l:VerticalLayout>
     </semantic:content>
 
     <semantic:sendEmailAction>

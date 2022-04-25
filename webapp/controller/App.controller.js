@@ -49,7 +49,7 @@ sap.ui.define([
 
 	return Controller.extend("multipleFiles.controller.App", {
 		// when the controller is initialized,
-		// we declare an empty structure and
+		// we declare an empty structure models/boxTestModel.vdsand
 		// we set this as model for the URLs
 		onInit: function() {
 			var sourceData = {

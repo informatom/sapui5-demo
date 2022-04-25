@@ -1,8 +1,8 @@
 {
-  "name": "sap.ui.core.tutorial.fiori2.01",
+  "name": "sap.rules.ui.sample.GuidedDecisionTable",
   "version": "1.0.0",
   "author": "SAP SE",
-  "description": "Sample: Flexible Column Layout App - Step 1 - Setting Up the Initial App",
+  "description": "Sample: Rule Builder - Basic Decision Table",
   "scripts": {
     "start": "ui5 serve",
     "build": "ui5 build"

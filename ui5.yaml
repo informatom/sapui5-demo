@@ -1,6 +1,6 @@
 specVersion: "2.6"
 metadata:
-  name: "sap.f.tutorial.fiori2.01"
+  name: "sap.rules.ui.sample.GuidedDecisionTable"
 type: application
 
 framework:

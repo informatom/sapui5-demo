@@ -1,77 +1,52 @@
-sap.ui.define([
-	'sap/ui/core/UIComponent',
-  'sap/ui/model/json/JSONModel',
-  'sap/f/FlexibleColumnLayoutSemanticHelper',
-  'sap/f/library'
-], function(UIComponent, JSONModel, FlexibleColumnLayoutSemanticHelper, fioriLibrary) {
-	'use strict';
+sap.ui.define(['sap/ui/core/UIComponent'],
+	function(UIComponent) {
+		"use strict";
 
-	return UIComponent.extend('sap.ui.demo.fiori2.Component', {
+		return UIComponent.extend("sap.rules.ui.sample.GuidedDecisionTable.Component", {
 
-		metadata: {
-			manifest: 'json'
-		},
-
-		init: function () {
-      var oModel,
-      oProductsModel,
-      oRouter;
-
-			UIComponent.prototype.init.apply(this, arguments);
-
-			oModel = new JSONModel();
-			this.setModel(oModel);
-
-			// set products demo model on this sample
-			oProductsModel = new JSONModel(sap.ui.require.toUrl('sap/ui/demo/mock') + '/products.json');
-			oProductsModel.setSizeLimit(1000);
-			this.setModel(oProductsModel, 'products');
-
-      oRouter = this.getRouter();
-			oRouter.attachBeforeRouteMatched(this._onBeforeRouteMatched, this);
-			oRouter.initialize();
-		},
-
-    getHelper: function () {
-			return this._getFcl().then(function(oFCL) {
-				var oSettings = {
-					defaultTwoColumnLayoutType: fioriLibrary.LayoutType.TwoColumnsMidExpanded,
-					defaultThreeColumnLayoutType: fioriLibrary.LayoutType.ThreeColumnsMidExpanded,
-          initialColumnsCount: 2,
-          maxColumnsCount: 2
-				};
-				return (FlexibleColumnLayoutSemanticHelper.getInstanceFor(oFCL, oSettings));
-			});
-		},
-
-		_onBeforeRouteMatched: function(oEvent) {
-			var oModel = this.getModel(),
-				sLayout = oEvent.getParameters().arguments.layout,
-        oNextUIState;
-
-			// If there is no layout parameter, query for the default level 0 layout (normally OneColumn)
-      if (!sLayout) {
-				this.getHelper().then(function(oHelper) {
-					oNextUIState = oHelper.getNextUIState(0);
-					oModel.setProperty("/layout", oNextUIState.layout);
-				});
-        return;
-			}    
-			oModel.setProperty("/layout", sLayout);
-		},
-    
-    _getFcl: function () {
-			return new Promise(function(resolve, reject) {
-				var oFCL = this.getRootControl().byId('flexibleColumnLayout');
-				if (!oFCL) {
-					this.getRootControl().attachAfterInit(function(oEvent) {
-						resolve(oEvent.getSource().byId('flexibleColumnLayout'));
-					}, this);
-					return;
+			metadata: {
+				"rootView": "sap.rules.ui.sample.GuidedDecisionTable.Page",
+				"dependencies": {
+					"libs": {
+						"sap.ui.core": {},
+						"sap.m": {},
+						"sap.ui.layout": {},
+						"sap.rules.ui": {}
+					}
+				},
+				config: {
+					sample: {
+						stretch: true,
+						files: [
+							"Page.view.xml",
+							"Page.controller.js",
+							"localService/vocabulary/metadata.xml",
+							"localService/vocabulary/mockdata/Vocabularies.json",
+							"localService/vocabulary/mockdata/Associations.json",
+							"localService/vocabulary/mockdata/Attributes.json",
+							"localService/vocabulary/mockdata/DataObjects.json",
+							"localService/vocabulary/mockdata/Rules.json",
+							"localService/vocabulary/mockdata/ValueHelps.json",
+							"localService/rule/metadata.xml",
+							"localService/rule/mockdata/Rules.json",
+							"localService/rule/mockdata/DecisionTableColumnConditions.json",
+							"localService/rule/mockdata/DecisionTableColumnResults.json",
+							"localService/rule/mockdata/DecisionTableColumns.json",
+							"localService/rule/mockdata/DecisionTableRowCells.json",
+							"localService/rule/mockdata/DecisionTableRows.json",
+							"localService/rule/mockdata/DecisionTables.json",
+							"localService/rule/mockdata/Projects.json",
+							"localService/rule/mockdata/RuleServices.json",
+							"localService/rule/mockdata/RulesetRules.json",
+							"localService/rule/mockdata/RulesetRuleServices.json",
+							"localService/rule/mockdata/Rulesets.json",
+							"localService/rule/responses.json"
+						] 
+					}
 				}
-				resolve(oFCL);
 
-			}.bind(this));
-		}
+			}
+
+		});
+
 	});
-});

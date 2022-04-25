@@ -1,6 +1,29 @@
 {
-    "sap.app": {
-    "id":"sap.rules.ui.sample.GuidedDecisionTable",
-    "type":"application"
-  }
+	"sap.app": {
+		"id": "sap.ui.comp.tutorial.smartControls.01",
+		"applicationVersion": {
+			"version": "1.0.0"
+		}
+	},
+	"sap.ui5": {
+		"config": {
+			"sample": {
+				"iframe": "index.html",
+				"stretch": true,
+				"files": [
+					"localService/metadata.xml",
+					"localService/mockdata/Products.json",
+					"localService/mockserver.js",
+					"lrep/component-test-changes.json",
+					"Component.js",
+					"index.html",
+					"initMockServer.js",
+					"manifest.json",
+					"SmartField.controller.js",
+					"SmartField.view.xml",
+					"manifest.json"
+				]
+			}
+		}
+	}
 }

@@ -1,6 +1,6 @@
-specVersion: "2.6"
+pecVersion: "2.6"
 metadata:
-  name: "sap.rules.ui.sample.TextRule"
+  name: "sap.ui.comp.tutorial.smartControls.01"
 type: application
 
 framework:

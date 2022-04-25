@@ -1,0 +1,6 @@
+{
+    "sap.app": {
+    "id":"sap.rules.ui.sample.GuidedDecisionTable",
+    "type":"application"
+  }
+}

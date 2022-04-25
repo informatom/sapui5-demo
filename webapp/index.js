@@ -12,13 +12,13 @@ sap.ui.require([
 			app : new App ({
 				pages : [
 					new Page({
-						title : "Rule Builder - Basic Decision Table",
+						title : "Rule Builder - Text Rule",
 						enableScrolling : false,
 						content : [
 							new ComponentContainer({
-								height : "100%", name : "sap.rules.ui.sample.GuidedDecisionTable",
+								height : "100%", name : "sap.rules.ui.sample.TextRule",
 								settings : {
-									id : "sap.rules.ui.sample.GuidedDecisionTable"
+									id : "sap.rules.ui.sample.TextRule"
 								}
 							})
 						]

@@ -1,6 +1,6 @@
 specVersion: "2.6"
 metadata:
-  name: "sap.rules.ui.sample.GuidedDecisionTable"
+  name: "sap.rules.ui.sample.TextRule"
 type: application
 
 framework:

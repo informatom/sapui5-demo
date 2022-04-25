@@ -1,8 +1,8 @@
 {
-  "name": "sap.rules.ui.sample.GuidedDecisionTable",
+  "name": "sap.rules.ui.sample.TextRule",
   "version": "1.0.0",
   "author": "SAP SE",
-  "description": "Sample: Rule Builder - Basic Decision Table",
+  "description": "Sample: Rule Builder - Text Rule",
   "scripts": {
     "start": "ui5 serve",
     "build": "ui5 build"

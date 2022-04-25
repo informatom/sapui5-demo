@@ -1,8 +1,8 @@
 <mvc:View
-	controllerName="sap.ui.demo.smartControls.SmartField"
+	controllerName="sap.ui.demo.smartControls.SmartFieldWithValueHelp"
 	xmlns="sap.m"
-	xmlns:smartForm="sap.ui.comp.smartform"
 	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:smartForm="sap.ui.comp.smartform"
 	xmlns:sap.ui.layout="sap.ui.layout"
 	xmlns:smartField="sap.ui.comp.smartfield">
 	<smartForm:SmartForm editable="true">

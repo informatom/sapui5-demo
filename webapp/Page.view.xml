@@ -6,6 +6,9 @@
         viewName="sap.rules.ui.sample.TextRule.Page.view"
         xmlns:rules="sap.rules.ui">
     <Button id="editButton" press=".handleEditButton" text="Edit"/>
-    <rules:RuleBuilder id="ruleBuilder" types="TextRule" editable="false"/>
-
+    <rules:RuleBuilder id="ruleBuilder" types="TextRule" editable="true">
+      <rules:textRuleConfiguration>
+      <rules:textRuleConfiguration enableSettings="true" enableElseIf= "false"/>
+      </rules:textRuleConfiguration>
+      </rules:RuleBuilder>
 </mvc:View>

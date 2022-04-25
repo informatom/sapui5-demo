@@ -1,4 +1,4 @@
-pecVersion: "2.6"
+specVersion: "2.6"
 metadata:
   name: "sap.ui.comp.tutorial.smartControls.01"
 type: application

@@ -1,6 +1,6 @@
 specVersion: "2.6"
 metadata:
-  name: "sap.ui.comp.tutorial.smartControls.01"
+  name: "sap.ui.vk.tutorial.VIT.01"
 type: application
 
 framework:

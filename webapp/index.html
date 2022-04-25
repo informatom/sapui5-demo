@@ -1,25 +1,26 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Smart Controls Tutorial</title>
-
-	<script id="sap-ui-bootstrap"
-		src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
-		data-sap-ui-theme="sap_fiori_3"
-		data-sap-ui-flexibilityServices='[{"connector": "LocalStorageConnector"}]'
-		data-sap-ui-resourceroots='{
-			"sap.ui.demo.smartControls": "./"
-		}'
-		data-sap-ui-oninit="module:sap/ui/demo/smartControls/initMockServer"
-		data-sap-ui-compatVersion="edge"
-		data-sap-ui-async="true"
-		data-sap-ui-frameOptions="trusted">
-	</script>
-</head>
-
-<body class="sapUiBody">
-	<div data-sap-ui-component data-name="sap.ui.demo.smartControls" data-id="container" data-settings='{"id" : "smartControls"}'></div>
-</body>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/> 
+    <script id="sap-ui-bootstrap"
+        src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+        data-sap-ui-libs="sap.ui.vk, sap.m"
+        data-sap-ui-theme="sap_belize"
+        data-sap-ui-bindingSyntax="complex"
+        data-sap-ui-resourceroots='{
+            "singleFile": "./"
+         }' >
+    </script>
+    <script>
+    sap.ui.getCore().attachInit(function(){
+        new sap.m.Shell({
+            app: new sap.ui.core.ComponentContainer({
+                name : "singleFile"
+            })
+        }).placeAt("content");
+    });
+    </script>
+    </head>
+    <body id="content" class="sapUiBody">
+    </body>
 </html>

@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="sap.suite.ui.commons.demokit.tutorial.icecream.01.controller.Startpage"
+	controllerName="sap.suite.ui.commons.demokit.tutorial.icecream.controller.Startpage"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
 	xmlns:layout="sap.ui.layout">

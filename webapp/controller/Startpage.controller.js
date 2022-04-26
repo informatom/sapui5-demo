@@ -3,7 +3,7 @@ sap.ui.define([
 ], function (Controller) {
 	"use strict";
 
-	return Controller.extend("sap.suite.ui.commons.demokit.tutorial.icecream.01.controller.Startpage", {
+	return Controller.extend("sap.suite.ui.commons.demokit.tutorial.icecream.controller.Startpage", {
 		onInit: function () {}
 	});
 });

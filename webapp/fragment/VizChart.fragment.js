@@ -8,7 +8,7 @@ sap.ui.define([
 ], function (VizFrame, FlattenedDataset, DimensionDefinition, MeasureDefinition, FeedItem, JSONModel) {
 	"use strict";
 
-	return sap.ui.jsfragment("sap.suite.ui.commons.demokit.tutorial.icecream.01.fragment.VizChart", {
+	return sap.ui.jsfragment("sap.suite.ui.commons.demokit.tutorial.icecream.fragment.VizChart", {
 		createContent: function (controller) {
 
 			var oVizFrame = new VizFrame({
@@ -76,7 +76,7 @@ sap.ui.define([
 				}
 			});
 
-			var sDataPath = sap.ui.require.toUrl("sap/suite/ui/commons/demokit/tutorial/icecream/01/model/data") + "/IceCreamTestData.json";
+			var sDataPath = sap.ui.require.toUrl("sap/suite/ui/commons/demokit/tutorial/icecream/model/data") + "/IceCreamTestData.json";
 			var oModel = new JSONModel(sDataPath);
 			controller.getView().setModel(oModel);
 

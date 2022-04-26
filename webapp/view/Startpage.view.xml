@@ -75,7 +75,8 @@
 				</GenericTile>
 				<GenericTile
 					class="sapUiTinyMarginBegin sapUiTinyMarginTop"
-					header="{i18n>startpageUserReviewsTileTitle}">
+					header="{i18n>startpageUserReviewsTileTitle}"
+          press=".onNavToReviews">
 					<tileContent>
 						<TileContent>
 							<content>

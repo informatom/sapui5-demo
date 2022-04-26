@@ -6,12 +6,11 @@ sap.ui.define([
 ], function(Controller, ContentResource, ContentConnector, ViewStateManager) {
 	"use strict";
 
-	return Controller.extend("standaloneViewport.controller.App", {
-
+	return Controller.extend("viewportScenetree.controller.App", {
 		onInit: function() {
 			var view = this.getView();
 			var oViewport = view.byId("viewport");
-
+			var sceneTree = view.byId("scenetree");
 			// Constructor for a new content resource. procides an object that owns content resouces, tracks changes, loads and destroys
 			// content built from the content resource.
 			var contentResource = new ContentResource({
@@ -20,6 +19,7 @@ sap.ui.define([
 				sourceType: "vds",
 				sourceId: "abc123"
 			});
+
 			// Constructor for a new content connector
 			var contentConnector = new ContentConnector("abcd");
 
@@ -28,9 +28,13 @@ sap.ui.define([
 				contentConnector: contentConnector
 			});
 
-			// set content connector and viewStateManager for viewport
+			// Set content connector and viewStateManager for viewport
 			oViewport.setContentConnector(contentConnector);
 			oViewport.setViewStateManager(viewStateManager);
+
+			// Set scene tree content connector and viewStateManager
+			sceneTree.setContentConnector(contentConnector);
+			sceneTree.setViewStateManager(viewStateManager);
 
 			view.addDependent(contentConnector).addDependent(viewStateManager);
 

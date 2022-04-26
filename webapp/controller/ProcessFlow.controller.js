@@ -3,7 +3,7 @@ sap.ui.define([
 ], function(Controller) {
 	"use strict";
 
-	return Controller.extend("sap.suite.ui.commons.demokit.tutorial.icecream.05.controller.ProcessFlow", {
+	return Controller.extend("sap.ui.vk.tutorial.icecream.controller.ProcessFlow", {
 
 	});
 });

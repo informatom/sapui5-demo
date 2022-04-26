@@ -1,7 +1,7 @@
 <mvc:View
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
-	controllerName="sap.suite.ui.commons.demokit.tutorial.icecream.05.controller.ProcessFlow">
+	controllerName="sap.ui.vk.tutorial.icecream.controller.ProcessFlow">
 	<Page
 		title="{i18n>processFlowTitle}"
 		backgroundDesign="Solid">

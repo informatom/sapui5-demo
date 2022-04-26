@@ -6,9 +6,9 @@ sap.ui.define([
 ], function (Controller, JSONModel, NumberFormat, formatMessage) {
 	"use strict";
 
-	return Controller.extend("sap.suite.ui.commons.demokit.tutorial.icecream.05.controller.Startpage", {
+	return Controller.extend("sap.ui.vk.tutorial.icecream.controller.Startpage", {
 		onInit: function () {
-			var sDataPath = sap.ui.require.toUrl("sap/suite/ui/commons/demokit/tutorial/icecream/05/model/data") + "/News.json";
+			var sDataPath = sap.ui.require.toUrl("sap.ui.vk.tutorial.icecream/model/data") + "/News.json";
 			var oModel = new JSONModel(sDataPath);
 			this.getView().setModel(oModel, "news");
 		},

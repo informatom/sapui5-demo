@@ -2,7 +2,7 @@
 	"_version": "1.21.0",
 	"sap.app": {
 		"_version": "1.1.0",
-		"id": "sap.suite.ui.commons.demokit.tutorial.icecream.05",
+		"id": "sap.ui.vk.tutorial.icecream",
 		"type": "application",
 		"i18n": {
 			"bundleUrl": "i18n/i18n.properties",
@@ -44,7 +44,7 @@
 	"sap.ui5": {
 		"_version": "1.1.0",
 		"rootView": {
-			"viewName": "sap.suite.ui.commons.demokit.tutorial.icecream.05.view.App",
+			"viewName": "sap.ui.vk.tutorial.icecream.view.App",
 			"type": "XML"
 		},
 		"dependencies": {
@@ -65,7 +65,7 @@
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "sap.suite.ui.commons.demokit.tutorial.icecream.05.i18n.i18n",
+					"bundleName": "sap.ui.vk.tutorial.icecream.i18n.i18n",
 					"supportedLocales": [
 						""
 					],
@@ -93,7 +93,7 @@
 			"config": {
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
-				"viewPath": "sap.suite.ui.commons.demokit.tutorial.icecream.05.view",
+				"viewPath": "sap.ui.vk.tutorial.icecream.view",
 				"controlId": "tutorialApp",
 				"controlAggregation": "pages",
 				"transition": "slide",

@@ -1,4 +1,4 @@
-<mvc:View controllerName="viewportScenetree.controller.App"
+<mvc:View controllerName="viewportScenetreeStepnav.controller.App"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:vk="sap.ui.vk"
@@ -6,22 +6,30 @@
 	xmlns:f="sap.ui.layout.form"
 	displayBlock="true">
 	<Shell>
-		<App id="viewportScenetree">
+		<App id="viewportScenetreeStepnav">
 			<Page title="{i18n>pageTitle}">
-				<l:Splitter height="100%">
-					<l:contentAreas>
-						<vk:Viewport id="viewport">
-							<vk:layoutData>
-								<l:SplitterLayoutData size="auto" minSize="200"/>
-							</vk:layoutData>
-						</vk:Viewport>
-						<vk:SceneTree id="scenetree">
-							<vk:layoutData>
-								<l:SplitterLayoutData size="320px" minSize="200"/>
-							</vk:layoutData>
-						</vk:SceneTree>
-					</l:contentAreas>
-				</l:Splitter>
+				<VBox height="100%" class="sapVizKitViewer">
+					<items>
+						<vk:StepNavigation id="StepNavigation"/>
+						<l:Splitter class="sapUiVizKitSplitter">
+							<l:layoutData>
+								<FlexItemData growFactor="1" minHeight="200px"/>
+							</l:layoutData>
+							<l:contentAreas>
+								<vk:Viewport id="viewport">
+									<vk:layoutData>
+										<l:SplitterLayoutData size="auto" minSize="200"/>
+									</vk:layoutData>
+								</vk:Viewport>
+								<vk:SceneTree id="scenetree">
+									<vk:layoutData>
+										<l:SplitterLayoutData size="320px" minSize="200"/>
+									</vk:layoutData>
+								</vk:SceneTree>
+							</l:contentAreas>
+						</l:Splitter>
+					</items>
+				</VBox>
 			</Page>
 		</App>
 	</Shell>

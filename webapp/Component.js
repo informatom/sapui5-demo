@@ -3,7 +3,7 @@ sap.ui.define([
 ], function(UIComponent) {
 	"use strict";
 
-	return UIComponent.extend("viewportScenetree.Component", {
+	return UIComponent.extend("viewportScenetreeStepnav.Component", {
 
 		metadata: {
 			manifest: "json"

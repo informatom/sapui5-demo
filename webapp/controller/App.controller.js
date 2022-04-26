@@ -1,87 +1,41 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-	"sap/ui/model/json/JSONModel",
 	"sap/ui/vk/ContentResource",
-	"sap/m/MessageToast"
-], function(Controller, JSONModel, ContentResource, MessageToast) {
+	"sap/ui/vk/ContentConnector",
+	 "sap/ui/vk/dvl/ViewStateManager"
+], function(Controller, ContentResource, ContentConnector, ViewStateManager) {
 	"use strict";
 
-	// Throws a Message Toast alert on the screen
-	// when user tries to load a model but there's no URL specified
-	var handleEmptyUrl = function(view) {
-		var oBundle = view.getModel("i18n").getResourceBundle();
-		var msg = oBundle.getText("missingUrl");
-		MessageToast.show(msg);
-	};
+	return Controller.extend("standaloneViewport.controller.App", {
 
-	// checks if all URL input fields are empty or not
-	var checkIfAllInputsEmpty = function(urls) {
-		var allEmpty = true;
-		for (var i = 0; i < urls.length; i++) {
-			if (urls[i]) {
-				allEmpty = false;
-				break;
-			}
-		}
-		return allEmpty;
-	};
-
-	// loads the models from the URLs into the viewer
-	var loadModelsIntoViewer = function(viewer, urls, sourceType) {
-		// clears all the models currently loaded in the viewer
-		viewer.destroyContentResources();
-
-		// iterates through all URLs
-		// and loads all models into the viewer
-		for (var i = 0; i < urls.length; i++) {
-			if (urls[i]) {
-				var contentResource = new ContentResource({
-					source: urls[i],
-					sourceType: sourceType,
-					sourceId: i.toString(),
-					name: urls[i].split("/").pop()
-				});
-				// add current model to the viewer
-				viewer.addContentResource(contentResource);
-			}
-		}
-	};
-
-	return Controller.extend("multipleFiles.controller.App", {
-		// when the controller is initialized,
-		// we declare an empty structure models/boxTestModel.vdsand
-		// we set this as model for the URLs
 		onInit: function() {
-			var sourceData = {
-				url1: "",
-				url2: "",
-				url3: ""
-			};
-			var model = new JSONModel();
-			model.setData(sourceData);
-			this.getView().setModel(model, "source");
-		},
-
-		// onPressLoadRemoteModels handles the click event on the LOAD button
-		onPressLoadRemoteModels: function(event) {
 			var view = this.getView();
-			// set the source model to a variable
-			var sourceData = view.getModel("source").getData();
+			var oViewport = view.byId("viewport");
 
-			// get the current viewer control
-			var viewer = view.byId("viewer");
+			// Constructor for a new content resource. procides an object that owns content resouces, tracks changes, loads and destroys
+			// content built from the content resource.
+			var contentResource = new ContentResource({
+				// specifying the resource to load
+				source: "models/boxTestModel.vds",
+				sourceType: "vds",
+				sourceId: "abc123"
+			});
+			// Constructor for a new content connector
+			var contentConnector = new ContentConnector("abcd");
 
-			// create the list of URLs from the input fields
-			var urls = [ sourceData.url1, sourceData.url2, sourceData.url3 ];
+			// Manages the visibility and the selection states of nodes in the scene.
+			var viewStateManager = new ViewStateManager("vsmA", {
+				contentConnector: contentConnector
+			});
 
-			// if all URL inputs are empty show an alert on the screen
-			// if at least one URL is specified, then take the URL list
-			// and load all existing ones into the viewer
-			if (checkIfAllInputsEmpty(urls)) {
-				handleEmptyUrl(view);
-			} else {
-				loadModelsIntoViewer(viewer, urls, "vds");
-			}
+			// set content connector and viewStateManager for viewport
+			oViewport.setContentConnector(contentConnector);
+			oViewport.setViewStateManager(viewStateManager);
+
+			view.addDependent(contentConnector).addDependent(viewStateManager);
+
+			// Add resource to load to content connector
+			contentConnector.addContentResource(contentResource);
 		}
 	});
 });

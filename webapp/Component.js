@@ -4,7 +4,7 @@ sap.ui.define([
 ], function (UIComponent, models) {
 	"use strict";
 
-	return UIComponent.extend("sap.suite.ui.commons.demokit.tutorial.icecream.Component", {
+	return UIComponent.extend("sap.suite.ui.commons.demokit.tutorial.icecream.05.Component", {
 
 		metadata: {
 			manifest: "json"
@@ -28,7 +28,7 @@ sap.ui.define([
 		createContent: function () {
 			// create root view
 			return sap.ui.view("AppView", {
-				viewName: "sap.suite.ui.commons.demokit.tutorial.icecream.view.App",
+				viewName: "sap.suite.ui.commons.demokit.tutorial.icecream.05.view.App",
 				type: "XML"
 			});
 		}
